@@ -1,0 +1,418 @@
+/* Variables de couleur */
+:root {
+  --deep-blue: #0a0e17;
+  --dark-blue: #121a2e;
+  --medium-blue: #1a2745;
+  --violet: #8a2be2;
+  --violet-light: #b36ef5;
+  --white: #ffffff;
+  --text-primary: #e6e6e6;
+  --text-secondary: #b3b3b3;
+}
+
+/* Reset et styles globaux */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--deep-blue);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* Header stylisé */
+header {
+  background: linear-gradient(135deg, var(--dark-blue) 0%, var(--deep-blue) 100%);
+  padding: 1.2rem 3rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  height: 45px;
+  /* filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(138, 43, 226, 0.5)); */
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.logo:hover {
+  transform: scale(1.1);
+  /* filter: brightness(0) invert(1) drop-shadow(0 0 10px var(--violet)); */
+}
+
+/* Navigation violette */
+nav ul {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+nav a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  position: relative;
+  padding: 0.3rem 0;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+nav a:hover {
+  color: var(--violet-light);
+}
+
+nav a::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(90deg, var(--violet), var(--white));
+  transition: width 0.4s ease;
+}
+
+nav a:hover::before {
+  width: 100%;
+}
+
+/* Contenu principal */
+main {
+  margin-top: 80px;
+  padding: 3rem 2rem;
+  min-height: calc(100vh - 120px);
+}
+
+/* Section avec effet glow violet */
+.presentation {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: linear-gradient(145deg, var(--dark-blue) 0%, var(--medium-blue) 100%);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(138, 43, 226, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.presentation::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(138, 43, 226, 0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+  z-index: -1;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.presentation h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1.8rem;
+  color: var(--white);
+  text-align: center;
+  position: relative;
+  display: inline-block;
+}
+
+.presentation h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--violet), transparent);
+}
+
+.presentation {
+  /* ... vos autres styles ... */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centre horizontalement tous les éléments enfants */
+}
+
+.presentation img {
+  max-width: 50%;
+  height: auto;
+  border-radius: 10px;
+  margin: 2rem 0; /* Conserve seulement les marges verticales */
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.presentation img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 30px rgb(166, 114, 215);
+}
+
+.presentation p {
+  margin-bottom: 1.5rem;
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  text-align: justify;
+}
+/* Adaptation pour les cartes de filières */
+.edt-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.8rem;
+    margin-top: 2rem;
+}
+
+.edt-card {
+    background: rgba(10, 14, 23, 0.8);
+    padding: 1.8rem;
+    border-radius: 12px;
+    border: 1px solid rgb(177, 95, 255);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.edt-card h3 {
+    color: var(--white);
+    font-size: 1.3rem;
+    margin-bottom: 0.7rem;
+    line-height: 1.4;
+}
+
+.edt-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+    min-height: 40px;
+}
+
+/* Bouton spécifique aux filières */
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0.8rem 1.5rem;
+    background: var(--violet);
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-align: center;
+}
+
+.download-btn:hover {
+    background: var(--violet-light);
+    box-shadow: 0 5px 15px rgb(192, 127, 254);
+    transform: translateY(-2px);
+}
+
+/* Responsive pour petits écrans */
+@media (max-width: 768px) {
+    .edt-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .edt-card {
+        padding: 1.5rem;
+    }
+    
+    .edt-card h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Formulaire avec effets violets */
+.contact-form {
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  background: linear-gradient(145deg, var(--dark-blue) 0%, var(--medium-blue) 100%);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(185, 109, 255, 0.574);
+}
+
+.contact-form h1 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: var(--white);
+  font-size: 2.5rem;
+  position: relative;
+}
+
+.contact-form h1::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--violet), transparent);
+}
+
+.form-group {
+  margin-bottom: 1.8rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.8rem;
+  color: var(--white);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  background-color: rgba(10, 14, 23, 0.7);
+  border: 1px solid rgb(166, 71, 255);
+  border-radius: 8px;
+  color: var(--white);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--violet);
+  box-shadow: 0 0 0 3px rgb(187, 114, 255);
+  background-color: rgba(10, 14, 23, 0.9);
+}
+
+.form-group textarea {
+  min-height: 180px;
+  resize: vertical;
+}
+
+button[type="submit"] {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid var(--violet);
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  display: block;
+  margin: 3rem auto 0;
+  width: 220px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+button[type="submit"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(138, 43, 226, 0.3), transparent);
+  transition: all 0.6s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: rgba(138, 43, 226, 0.1);
+  box-shadow: 0 0 20px rgb(171, 104, 234);
+  transform: translateY(-3px);
+}
+
+button[type="submit"]:hover::before {
+  left: 100%;
+}
+
+/* Footer avec bordure violette */
+footer {
+  background: linear-gradient(135deg, var(--dark-blue) 0%, var(--deep-blue) 100%);
+  color: var(--text-secondary);
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid rgb(137, 43, 226);
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
+}
+
+footer p {
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+/* Effets spéciaux */
+::selection {
+  background-color: var(--violet);
+  color: var(--white);
+}
+
+/* Animation d'entrée */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.presentation, .contact-form {
+  animation: fadeInUp 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  header {
+    padding: 1rem;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  nav ul {
+    margin-top: 1rem;
+    gap: 1.2rem;
+    justify-content: center;
+  }
+  
+  .presentation, .contact-form {
+    padding: 1.8rem;
+    margin: 1rem auto;
+  }
+  
+  .presentation h1, .contact-form h1 {
+    font-size: 2.2rem;
+  }
+}
